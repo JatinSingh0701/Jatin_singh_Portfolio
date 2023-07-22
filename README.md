@@ -1,7 +1,5 @@
 # Jatin Singh Portfolio
 
-![Jatin Singh Portfolio](./screenshot.png)
-
 ## Table of Contents
 
 - [Description](#description)
