@@ -1,14 +1,27 @@
-const express = require('express');
-const homeRouter = require('./routes/home.routes');
+const express = require("express");
+const bodyParser = require("body-parser");
+const homeRouter = require("./routes/home.routes");
+
 const app = express();
-const port = 3000;
 
-app.set('view engine', 'ejs');
+// Middleware
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('public'));
-
+// Routes
 app.use(homeRouter);
 
-app.listen(port, () => {
-  console.log('Server is good to go on http://localhost:' + port);
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
 });
+
+// Server
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
