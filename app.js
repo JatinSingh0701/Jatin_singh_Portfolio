@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const homeRouter = require("./routes/home.routes");
+const sequelize = require("./utils/database");
 
 const app = express();
 
@@ -21,7 +22,13 @@ app.use((err, req, res, next) => {
 // Server
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
+sequelize
+  .sync({ force: true })
+  .then((result) => {
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
