@@ -22,13 +22,17 @@ app.use((err, req, res, next) => {
 // Server
 const port = process.env.PORT || 3000;
 
-sequelize
-  .sync({ force: true })
-  .then((result) => {
-    app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
+// sequelize
+//   .sync({ force: true })
+//   .then((result) => {
+//     app.listen(port, () => {
+//       console.log(`Server is running on http://localhost:${port}`);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error("Unable to connect to the database:", err);
+//   });
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

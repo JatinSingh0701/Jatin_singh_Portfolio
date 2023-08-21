@@ -29,10 +29,10 @@
         </h1>
 
         <div class="navbar-actions">
-          <select name="language" id="lang">
+          <!-- <select name="language" id="lang">
             <option value="en">En</option>
             <option value="ar">Hi</option>
-          </select>
+          </select> -->
 
           <button
             class="theme-btn"
@@ -57,13 +57,29 @@
 
         <nav class="navbar" data-navbar>
           <ul class="navbar-list">
-            <li><a href="#home" class="navbar-link">Home.</a></li>
+            <li>
+              <a
+                href="<% if (!home) {%>
+             / " class="navbar-link"
+                >Home.</a
+              >
+            </li>
+            <% } else {%>
+            #home
+           "
+                class="navbar-link"
+                >Home.</a
+              >
+            </li>
             <li><a href="#about" class="navbar-link">About.</a></li>
             <li><a href="#skills" class="navbar-link">Skills.</a></li>
-            <li><a href="#portfolio" class="navbar-link">Portfolio.</a></li>
+            <li><a href="/portfolio" class="navbar-link">Portfolio.</a></li>
             <li><a href="#contact" class="navbar-link">Contact.</a></li>
+            <% } %>
           </ul>
         </nav>
       </div>
     </header>
     <!-- End of Navbar  -->
+  </body>
+</html>
